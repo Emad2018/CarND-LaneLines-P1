@@ -14,24 +14,6 @@ To complete the project, two files will be submitted: a file containing project 
 
 To meet specifications in the project, take a look at the requirements in the [project rubric](https://review.udacity.com/#!/rubrics/322/view)
 
-
-Creating a Great Writeup
----
-For this project, a great writeup should provide a detailed response to the "Reflection" section of the [project rubric](https://review.udacity.com/#!/rubrics/322/view). There are three parts to the reflection:
-
-1. Describe the pipeline
-
-2. Identify any shortcomings
-
-3. Suggest possible improvements
-
-We encourage using images in your writeup to demonstrate how your pipeline works.  
-
-All that said, please be concise!  We're not looking for you to write a book here: just a brief description.
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup. Here is a link to a [writeup template file](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md). 
-
-
 The Project
 ---
 
@@ -51,6 +33,51 @@ A browser window will appear showing the contents of the current directory.  Cli
 
 **Step 3:** Complete the project and submit both the Ipython notebook and the project writeup
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+
+# **Finding Lane Lines on the Road** 
+
+### Reflection
+
+
+My pipeline consisted of 5 steps:
+
+First, I converted the images to grayscale, 
+
+<img src="images/1.png" width="480" alt="Combined Image" />
+
+then I made a guassian blur to remove the noise.
+
+<img src="images/2.png" width="480" alt="Combined Image" />
+
+After that I made a canny edge detection to find  any edges in the image.
+
+<img src="images/3.png" width="480" alt="Combined Image" />
+
+then  made a ROI to foucs on the area that contains propably the lane.
+ 
+<img src="images/4.png" width="480" alt="Combined Image" />
+
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by checking if the line is left or right by compare the index with the Image mid point then make a group of point and try to fit a line.
+
+<img src="images/5.png" width="480" alt="Combined Image" />
+
+
+The output will be like that (I have add the ROI to Illustrate: 
+
+<img src="images/6.png" width="480" alt="Combined Image" />
+
+
+### 2. Identify potential shortcomings with your current pipeline
+
+
+One potential shortcoming would be what would happen when the car goes to a curve as the are fitting a line not a curve. 
+
+Another shortcoming could be if there are changes in ROI and not a lane  which making the canny edges detect noise edges.
+
+
+### 3. Suggest possible improvements to your pipeline
+
+A possible improvement would be to fit a curve in the second dgree
+
+Another potential improvement could be to use color threshold as the lanes are only in yellow or white.
 
